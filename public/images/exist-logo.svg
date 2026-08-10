@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 54" width="220" height="54">
+  <defs>
+    <linearGradient id="existGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5252" />
+      <stop offset="100%" stop-color="#FF7A00" />
+    </linearGradient>
+  </defs>
+  <!-- EXIST Logo style mark -->
+  <g transform="translate(6, 6)">
+    <!-- Red/Orange stylized dynamic arrows / triangles of EXIST -->
+    <path d="M0 6 L18 6 L24 16 L6 16 Z" fill="url(#existGrad)" />
+    <path d="M8 20 L26 20 L32 30 L14 30 Z" fill="url(#existGrad)" opacity="0.9" />
+    <path d="M16 34 L34 34 L40 44 L22 44 Z" fill="url(#existGrad)" opacity="0.75" />
+    
+    <!-- Text EXIST -->
+    <text x="46" y="27" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="21" font-weight="900" letter-spacing="0.08em" fill="#FFFFFF">EXIST</text>
+    <text x="47" y="39" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="8.5" font-weight="600" letter-spacing="0.04em" fill="#94A3B8">Existenzgründungen aus der Wissenschaft</text>
+  </g>
+</svg>

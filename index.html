@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>suuts.io | 3D Body Scanning &amp; Precision Measurement for Custom Wetsuits</title>
+  <meta name="description" content="suuts.io transforms smartphone photos into millimeter-accurate 3D body scans for custom-fit wetsuits and high-performance apparel. EXIST-funded German university spin-off.">
+  <meta name="keywords" content="3D body scanning, custom wetsuit, bespoke neoprene, computer vision measurement, EXIST Gründerstipendium, AI tailor">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="suuts.io | 3D Body Scanning for Custom-Fit Wetsuits">
+  <meta property="og:description" content="Millimeter-precise 3D fashion measurement from two smartphone photos. Eliminating sizing guesswork for custom-tailored wetsuits.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://suuts.io">
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./src/styles/variables.css">
+  <link rel="stylesheet" href="./src/styles/base.css">
+  <link rel="stylesheet" href="./src/styles/components.css">
+  <link rel="stylesheet" href="./src/styles/sections.css">
+</head>
+<body>
+
+  <!-- Sticky Header Navigation -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="#hero" class="brand-logo" aria-label="suuts.io Home">
+        <img src="/images/logo.svg" alt="suuts.io logo" width="160" height="36">
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#technology" class="nav-link" data-i18n="navTech">Technologie</a></li>
+          <li><a href="#poc" class="nav-link" data-i18n="navPoc">Wetsuit PoC</a></li>
+          <li><a href="#pilot" class="nav-link" data-i18n="navPilot">Pilotpartner</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" role="group" aria-label="Language selector">
+          <button class="lang-btn active" data-lang="de" aria-label="Deutsch">DE</button>
+          <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        </div>
+
+        <a href="#pilot" class="btn btn-primary btn-sm" data-i18n="navCta">Zugang anfragen</a>
+
+        <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Menü öffnen">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- SECTION 1: HERO SECTION -->
+    <section class="section hero-section" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Copy -->
+          <div class="hero-content">
+            <div class="hero-badges">
+              <div class="badge-exist">
+                <span class="badge-live-pulse"></span>
+                <span data-i18n="heroBadgeExist">EXIST-gefördert • Deutsche Hochschul-Ausgründung</span>
+              </div>
+            </div>
+
+            <h1 class="hero-title" data-i18n="heroTitle">
+              3D-Körperscan für <span class="text-gradient">maßgefertigte Wetsuits</span>
+            </h1>
+
+            <p class="hero-lead" data-i18n="heroLead">
+              Millimetergenaue biometrische Körpervermessung aus zwei Smartphone-Fotos. Schluss mit Passformproblemen, Wassereintritt und hohen Retouren bei High-Performance Neoprenanzügen.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#pilot" class="btn btn-primary btn-lg" id="heroPrimaryCta">
+                <span data-i18n="heroCtaPrimary">Am Wetsuit-Pilot teilnehmen</span>
+                <i data-lucide="arrow-right"></i>
+              </a>
+              <a href="#technology" class="btn btn-secondary btn-lg" id="heroSecondaryCta">
+                <span data-i18n="heroCtaSecondary">3D-Pipeline entdecken</span>
+              </a>
+            </div>
+
+            <!-- Key Metrics Ticker -->
+            <div class="metrics-strip">
+              <div class="metric-card">
+                <div class="metric-val" data-i18n="metricVarianceVal">&lt; 0,5%</div>
+                <div class="metric-lbl" data-i18n="metricVarianceLbl">Messabweichung (±2mm)</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" data-i18n="metricPointsVal">80+</div>
+                <div class="metric-lbl" data-i18n="metricPointsLbl">Biometrische Schnittpunkte</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" data-i18n="metricTimeVal">30s</div>
+                <div class="metric-lbl" data-i18n="metricTimeLbl">Mobile Scan-Dauer</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-val" data-i18n="metricReturnVal">0%</div>
+                <div class="metric-lbl" data-i18n="metricReturnLbl">Wassereintritt &amp; Spalten</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Visual: 3D Scanner Canvas with Cyber HUD Overlay -->
+          <div class="hero-visual">
+            <div class="scanner-canvas-wrapper">
+              <canvas id="bodyScannerCanvas" class="scanner-canvas"></canvas>
+
+              <!-- HUD Interface -->
+              <div class="scanner-hud">
+                <div class="hud-header">
+                  <div class="hud-status-badge">
+                    <span class="badge-live-pulse"></span>
+                    <span data-i18n="hudStatus">NEURAL 3D MESH SCANNER</span>
+                  </div>
+                  <div class="hud-frame-rate">60 FPS</div>
+                </div>
+
+                <!-- Animated Laser Scanline -->
+                <div class="hud-scanline"></div>
+
+                <!-- Live Biometric Landmarks -->
+                <div class="hud-landmarks">
+                  <div class="hud-point" style="top: 28%; left: 68%;">
+                    <span class="point-dot"></span>
+                    <span class="point-tag" data-i18n="hudChest">BRUST 104,2 cm</span>
+                  </div>
+                  <div class="hud-point" style="top: 42%; left: 28%;">
+                    <span class="point-dot"></span>
+                    <span class="point-tag" data-i18n="hudTorso">TORSOLÄNGE 76,8 cm</span>
+                  </div>
+                  <div class="hud-point" style="top: 49%; left: 70%;">
+                    <span class="point-dot"></span>
+                    <span class="point-tag" data-i18n="hudWaist">TAILLE 82,5 cm</span>
+                  </div>
+                  <div class="hud-point" style="top: 76%; left: 66%;">
+                    <span class="point-dot"></span>
+                    <span class="point-tag" data-i18n="hudInseam">BEINLÄNGE 82,4 cm</span>
+                  </div>
+                </div>
+
+                <div class="hud-drag-hint" data-i18n="hudDragHint">
+                  ⇄ Ziehen, um 3D-Mesh zu drehen
+                </div>
+
+                <div class="hud-footer">
+                  <span data-i18n="hudAccuracy">PRÄZISION: ±1,8mm</span>
+                  <span data-i18n="hudVertices">VERTICES: 124.800</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: TECHNOLOGY PIPELINE -->
+    <section class="section" id="technology">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i data-lucide="cpu"></i>
+            <span data-i18n="techTag">3D Computer Vision Pipeline</span>
+          </div>
+          <h2 class="section-title" data-i18n="techTitle">
+            Vom Smartphone-Foto zum <span class="text-gradient">fertigen CAD-Schnittmuster</span>
+          </h2>
+          <p class="section-subtitle" data-i18n="techSubtitle">
+            Unsere neuronale Geometrie-Engine wandelt zwei gewöhnliche 2D-Fotos in hochpräzise parametrische 3D-Körpermodelle für die automatisierte Maßanfertigung um.
+          </p>
+        </div>
+
+        <div class="pipeline-grid">
+          <!-- Step 1 -->
+          <div class="glass-card pipeline-card">
+            <div class="pipeline-step-num" data-i18n="step1Num">01</div>
+            <div>
+              <div class="pipeline-icon-box">
+                <i data-lucide="smartphone"></i>
+              </div>
+              <h3 class="pipeline-card-title" data-i18n="step1Title">Mobiler 2-Foto-Scan</h3>
+              <p class="pipeline-card-text" data-i18n="step1Desc">
+                Front- und Profilaufnahme mit jedem Smartphone. Kein LiDAR oder teure 3D-Kabine notwendig.
+              </p>
+            </div>
+            <ul class="pipeline-features">
+              <li><i data-lucide="check"></i> <span data-i18n="step1F1">Datenschutzkonforme On-Device-Verarbeitung</span></li>
+              <li><i data-lucide="check"></i> <span data-i18n="step1F2">Automatische Haltungskorrektur &amp; Pose-Estimation</span></li>
+              <li><i data-lucide="check"></i> <span data-i18n="step1F3">Kompatibel mit allen iOS &amp; Android Geräten</span></li>
+            </ul>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="glass-card pipeline-card">
+            <div class="pipeline-step-num" data-i18n="step2Num">02</div>
+            <div>
+              <div class="pipeline-icon-box">
+                <i data-lucide="box"></i>
+              </div>
+              <h3 class="pipeline-card-title" data-i18n="step2Title">KI-gestützte 3D-Mesh Rekonstruktion</h3>
+              <p class="pipeline-card-text" data-i18n="step2Desc">
+                Unser neuronales Netz generiert einen parametrischen 3D-Körperavatar und extrahiert über 80 biometrische Maße.
+              </p>
+            </div>
+            <ul class="pipeline-features">
+              <li><i data-lucide="check"></i> <span data-i18n="step2F1">Millimetergenaue anatomische Konturierung</span></li>
+              <li><i data-lucide="check"></i> <span data-i18n="step2F2">Kompensation von Gewebespannung und Atmung</span></li>
+              <li><i data-lucide="check"></i> <span data-i18n="step2F3">Verarbeitung in Echtzeit (&lt; 15 Sekunden)</span></li>
+            </ul>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="glass-card pipeline-card">
+            <div class="pipeline-step-num" data-i18n="step3Num">03</div>
+            <div>
+              <div class="pipeline-icon-box">
+                <i data-lucide="layers"></i>
+              </div>
+              <h3 class="pipeline-card-title" data-i18n="step3Title">Automatisierter Neopren-Zuschnitt</h3>
+              <p class="pipeline-card-text" data-i18n="step3Desc">
+                Direkte Überführung in 2D-Schnittteile mit individueller Materialdehnung und optimierten Nahtverläufen.
+              </p>
+            </div>
+            <ul class="pipeline-features">
+              <li><i data-lucide="check"></i> <span data-i18n="step3F1">Direktexport für CNC-Cutter (DXF / Gerber)</span></li>
+              <li><i data-lucide="check"></i> <span data-i18n="step3F2">Keine menschlichen Messfehler bei der Maßschneiderei</span></li>
+              <li><i data-lucide="check"></i> <span data-i18n="step3F3">Drastisch reduzierter Verschnitt &amp; schnellere Produktion</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: WETSUIT POC SHOWCASE & FIT SIMULATOR -->
+    <section class="section" id="poc">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <i data-lucide="waves"></i>
+            <span data-i18n="pocTag">Proof of Concept: Wassersport</span>
+          </div>
+          <h2 class="section-title" data-i18n="pocTitle">
+            Warum Wetsuits zuerst? <span class="text-gradient">Der ultimative Härtetest</span>
+          </h2>
+          <p class="section-subtitle" data-i18n="pocSubtitle">
+            Neoprenanzüge müssen wie eine zweite Haut sitzen. Standardgrößen führen zu kaltem Wassereintritt, scheuernden Nähten und Retourenquoten über 35%. suuts.io liefert die Lösung.
+          </p>
+        </div>
+
+        <div class="poc-layout">
+          <!-- Left: Comparison Table & Wetsuit Diagram -->
+          <div class="glass-card poc-info-card">
+            <div class="comparison-table-wrapper">
+              <table class="fit-comparison-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="pocCompFeature">Eigenschaft</th>
+                    <th data-i18n="pocCompStandard">Standardgröße (S/M/L)</th>
+                    <th data-i18n="pocCompSuuts">suuts.io 3D Biometrie</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-i18n="pocRow1Key">Passtoleranz</td>
+                    <td data-i18n="pocRow1Std">± 25 mm (Falten &amp; Hohlräume)</td>
+                    <td data-i18n="pocRow1Suuts">± 2 mm (Anatomische Dichtung)</td>
+                  </tr>
+                  <tr>
+                    <td data-i18n="pocRow2Key">Wassereintritt / Flushing</td>
+                    <td data-i18n="pocRow2Std">Häufig an Nacken &amp; Lendenwirbel</td>
+                    <td data-i18n="pocRow2Suuts">0% (Hydro-Lock Kompression)</td>
+                  </tr>
+                  <tr>
+                    <td data-i18n="pocRow3Key">Paddel-Ermüdung</td>
+                    <td data-i18n="pocRow3Std">Spannung im Schulterbereich</td>
+                    <td data-i18n="pocRow3Suuts">Ergonomische Gelenkanpassung</td>
+                  </tr>
+                  <tr>
+                    <td data-i18n="pocRow4Key">E-Commerce Retouren</td>
+                    <td data-i18n="pocRow4Std">Bis zu 38% Größenretouren</td>
+                    <td data-i18n="pocRow4Suuts">&lt; 2% Gesamtabweichung</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Live Fit Simulator -->
+          <div class="fit-simulator">
+            <div class="sim-header">
+              <h3 data-i18n="simTitle">Interaktiver Passform-Simulator</h3>
+              <div class="sim-mode-toggle">
+                <button class="sim-mode-btn active" data-mode="suuts" data-i18n="simModeSuuts">suuts 3D</button>
+                <button class="sim-mode-btn" data-mode="standard" data-i18n="simModeStd">Standard (M)</button>
+              </div>
+            </div>
+
+            <!-- Sliders -->
+            <div class="sim-sliders">
+              <div class="sim-slider-group">
+                <div class="sim-slider-label">
+                  <span data-i18n="simHeightLbl">Körpergröße</span>
+                  <span id="val-height">182 cm</span>
+                </div>
+                <input type="range" id="sim-height" class="sim-slider" min="160" max="205" value="182">
+              </div>
+
+              <div class="sim-slider-group">
+                <div class="sim-slider-label">
+                  <span data-i18n="simChestLbl">Brustumfang</span>
+                  <span id="val-chest">104 cm</span>
+                </div>
+                <input type="range" id="sim-chest" class="sim-slider" min="85" max="130" value="104">
+              </div>
+
+              <div class="sim-slider-group">
+                <div class="sim-slider-label">
+                  <span data-i18n="simTorsoLbl">Torso-Proportion</span>
+                  <span id="val-torso">Athletisch / Lang</span>
+                </div>
+                <input type="range" id="sim-torso" class="sim-slider" min="1" max="3" step="1" value="2">
+              </div>
+            </div>
+
+            <!-- Live Telemetry Results -->
+            <div class="sim-results-grid">
+              <div class="sim-result-box">
+                <div class="sim-result-val" id="sim-score">99.4%</div>
+                <div class="sim-result-lbl" data-i18n="simResFitScore">Passform-Präzision</div>
+              </div>
+              <div class="sim-result-box">
+                <div class="sim-result-val" id="sim-water-risk">&lt; 0.5%</div>
+                <div class="sim-result-lbl" data-i18n="simResWaterRisk">Wassereintritt-Risiko</div>
+              </div>
+              <div class="sim-result-box">
+                <div class="sim-result-val" id="sim-flex">98.8%</div>
+                <div class="sim-result-lbl" data-i18n="simResFlex">Schulter-Flexibilität</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PILOT PARTNER & EARLY ACCESS -->
+    <section class="section" id="pilot">
+      <div class="container">
+        <div class="cta-wrapper">
+          <div class="cta-grid">
+            
+            <!-- Left Info -->
+            <div class="cta-info">
+              <div class="section-tag">
+                <i data-lucide="sparkles"></i>
+                <span data-i18n="pilotTag">B2B Pilotprogramm 2026</span>
+              </div>
+              
+              <h2 data-i18n="pilotTitle">
+                Werden Sie Pilotpartner im <span class="text-gradient">Wetsuit PoC</span>
+              </h2>
+              
+              <p data-i18n="pilotSubtitle">
+                Wir starten gemeinsame Pilotprojekte mit Wetsuit-Marken, Neoprenherstellern, Shapern und Profi-Athleten.
+              </p>
+
+              <ul class="cta-perks">
+                <li><i data-lucide="check"></i> <span data-i18n="pilotPerk1">Früher API-Zugang zur 3D-Scanning-Engine</span></li>
+                <li><i data-lucide="check"></i> <span data-i18n="pilotPerk2">Maßgeschneiderte Test-Batches für Athleten</span></li>
+                <li><i data-lucide="check"></i> <span data-i18n="pilotPerk3">Messbare Reduzierung von Passform-Retouren</span></li>
+                <li><i data-lucide="check"></i> <span data-i18n="pilotPerk4">Direkte Zusammenarbeit mit unserem Forschungsteam</span></li>
+              </ul>
+            </div>
+
+            <!-- Right Interactive Form -->
+            <div class="cta-form-card">
+              <form id="pilotForm">
+                
+                <div class="form-group">
+                  <label class="form-label" data-i18n="formRoleTitle">Ich bewerbe mich als:</label>
+                  <div class="role-chips">
+                    <label class="role-chip">
+                      <input type="radio" name="pilot_role" value="brand" checked>
+                      <div class="role-chip-card">
+                        <i data-lucide="layers"></i>
+                        <span data-i18n="roleBrand">Wetsuit-Marke</span>
+                      </div>
+                    </label>
+                    <label class="role-chip">
+                      <input type="radio" name="pilot_role" value="shaper">
+                      <div class="role-chip-card">
+                        <i data-lucide="ruler"></i>
+                        <span data-i18n="roleShaper">Custom Shaper</span>
+                      </div>
+                    </label>
+                    <label class="role-chip">
+                      <input type="radio" name="pilot_role" value="athlete">
+                      <div class="role-chip-card">
+                        <i data-lucide="waves"></i>
+                        <span data-i18n="roleAthlete">Athlet</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="form-name" data-i18n="formName">Vollständiger Name</label>
+                    <input type="text" id="form-name" class="form-input" required placeholder="Dr. Sarah Meier">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="form-company" data-i18n="formCompany">Unternehmen / Marke</label>
+                    <input type="text" id="form-company" class="form-input" required placeholder="Nordic Neoprene Lab">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="form-email" data-i18n="formEmail">E-Mail-Adresse</label>
+                  <input type="email" id="form-email" class="form-input" required placeholder="sarah@nordicneoprene.com">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="form-message" data-i18n="formMsg">Herausforderungen bei Passform &amp; Produktion</label>
+                  <textarea id="form-message" class="form-textarea" rows="3" placeholder="Wir möchten maßgeschneiderte Winter-Neoprenanzüge für Surfer mit 3D-Körperscans anbieten..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" id="submitPilotBtn">
+                  <span data-i18n="formSubmit">Pilot-Bewerbung absenden</span>
+                  <i data-lucide="arrow-right"></i>
+                </button>
+
+                <div class="form-success-banner" id="formSuccess" data-i18n="formSuccess">
+                  Vielen Dank für Ihre Bewerbung! Unser Pilot-Koordinator meldet sich innerhalb von 24 Stunden bei Ihnen.
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- OFFICIAL FOOTER & FUNDING DISCLOSURE -->
+  <footer class="site-footer">
+    <div class="container">
+      
+      <!-- Trust Logos & Funding Badges -->
+      <div class="footer-trust-grid">
+        <div class="footer-logo-card">
+          <img src="/images/exist-logo.svg" alt="EXIST Logo" width="220" height="54">
+        </div>
+        <div class="footer-logo-card">
+          <img src="/images/bmwk-logo.svg" alt="BMWK Bundesministerium für Wirtschaft und Klimaschutz" width="240" height="60">
+        </div>
+        <div class="footer-logo-card">
+          <img src="/images/eu-logo.svg" alt="Europäische Union - Europäischer Sozialfonds" width="200" height="50">
+        </div>
+        <div class="footer-logo-card">
+          <img src="/images/university-badge.svg" alt="Deutsche Hochschul-Ausgründung" width="210" height="50">
+        </div>
+      </div>
+
+      <p class="footer-funding-text" data-i18n="footerExistNotice">
+        Gefördert durch das Bundesministerium für Wirtschaft und Klimaschutz im Rahmen des EXIST-Programms aufgrund eines Beschlusses des Deutschen Bundestages. Kofinanziert durch die Europäische Union (ESF Plus).
+      </p>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          &copy; 2026 suuts.io • <span data-i18n="footerRights">Alle Rechte vorbehalten.</span>
+        </div>
+
+        <ul class="footer-legal-links">
+          <li><a href="#" class="open-impressum" data-i18n="footerLegalImpressum">Impressum</a></li>
+          <li><a href="#" class="open-privacy" data-i18n="footerLegalPrivacy">Datenschutz</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- IMPRESSUM MODAL -->
+  <div class="modal-overlay" id="impressumModal" role="dialog" aria-modal="true" aria-labelledby="impressumHeading">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Schließen"><i data-lucide="x"></i></button>
+      <div class="modal-body">
+        <h2 id="impressumHeading" style="margin-bottom: 1.5rem;">Impressum</h2>
+        <p><strong>suuts.io (in Gründung / EXIST-Projekt)</strong></p>
+        <p>Ein Ausgründungsvorhaben aus einer deutschen Hochschule im Rahmen des EXIST-Gründerstipendiums.</p>
+        
+        <h3>Angaben gemäß § 5 TMG</h3>
+        <p>
+          Projektleitung / Vertretungsberechtigt: Projektteam suuts.io<br>
+          E-Mail: contact@suuts.io<br>
+          Web: https://suuts.io
+        </p>
+
+        <h3>Förderhinweis</h3>
+        <p>
+          Dieses Vorhaben wird im Rahmen des Förderprogramms EXIST – Existenzgründungen aus der Wissenschaft durch das Bundesministerium für Wirtschaft und Klimaschutz sowie den Europäischen Sozialfonds (ESF Plus) gefördert.
+        </p>
+
+        <h3>Haftung für Inhalte</h3>
+        <p>
+          Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIVACY / DATENSCHUTZ MODAL -->
+  <div class="modal-overlay" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyHeading">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Schließen"><i data-lucide="x"></i></button>
+      <div class="modal-body">
+        <h2 id="privacyHeading" style="margin-bottom: 1.5rem;">Datenschutzerklärung</h2>
+        
+        <h3>1. Datenschutz auf einen Blick</h3>
+        <p>
+          Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften (DSGVO) sowie dieser Datenschutzerklärung.
+        </p>
+
+        <h3>2. Datenerfassung auf dieser Website</h3>
+        <p>
+          Wenn Sie unser Pilotpartner-Formular nutzen, werden die von Ihnen eingegebenen Daten (Name, Organisation, E-Mail, Anmerkungen) ausschließlich zur Kontaktaufnahme und Evaluierung des Wetsuit-Pilotprojekts verarbeitet.
+        </p>
+
+        <h3>3. 3D-Biometriedaten &amp; Bildverarbeitung</h3>
+        <p>
+          Im Rahmen unserer Forschung und des PoC-Scannings werden Bilddaten standardmäßig On-Device anonymisiert. Es werden ausschließlich parametrische Punktwolken und Vektormaße zur Passformberechnung verwendet.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entry Script -->
+  <script type="module" src="./src/js/main.js"></script>
+</body>
+</html>
