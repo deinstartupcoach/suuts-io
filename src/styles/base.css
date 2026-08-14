@@ -175,6 +175,18 @@ button, input, textarea, select {
   border: 1px solid rgba(145, 105, 216, 0.25);
 }
 
+.section-tag.tag-orange {
+  color: #ffffff;
+  background: var(--primary);
+  border: 1.5px solid var(--primary);
+  box-shadow: 0 4px 14px rgba(204, 96, 60, 0.32);
+}
+
+.section-tag.tag-orange i,
+.section-tag.tag-orange svg {
+  color: #ffffff;
+}
+
 .section-title {
   margin-bottom: 1rem;
 }
