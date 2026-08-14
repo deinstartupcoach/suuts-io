@@ -18,14 +18,14 @@ export function initFitSimulator() {
 
   const torsoLabels = {
     1: 'Compact / Short',
-    2: 'Proportional / Mid',
-    3: 'Athletic / Long',
+    2: 'Athletic / Mid',
+    3: 'Tall / Long',
   };
 
   const torsoLabelsDE = {
     1: 'Kompakt / Kurz',
-    2: 'Proportional / Mittel',
-    3: 'Athletisch / Lang',
+    2: 'Athletisch / Mittel',
+    3: 'Groß / Lang',
   };
 
   function updateValues() {
@@ -33,7 +33,7 @@ export function initFitSimulator() {
     const c = parseInt(chestSlider.value, 10);
     const t = parseInt(torsoSlider.value, 10);
 
-    // Update Slider Displays
+    // Update Slider Value Displays
     if (heightVal) heightVal.textContent = `${h} cm`;
     if (chestVal) chestVal.textContent = `${c} cm`;
     if (torsoVal) {
@@ -42,7 +42,7 @@ export function initFitSimulator() {
     }
 
     if (currentMode === 'suuts') {
-      // 3D Custom Fit always optimizes precisely to millimeters
+      // 3D Custom Fit always delivers precision tailored to individual body
       if (scoreEl) {
         scoreEl.textContent = '99.4%';
         scoreEl.className = 'sim-result-val';
@@ -56,16 +56,15 @@ export function initFitSimulator() {
         flexEl.className = 'sim-result-val';
       }
     } else {
-      // Standard Off-The-Rack M/L Size calculation deviates from ideal fit
-      // Base standard size M is around Height 178, Chest 98, Torso 2
+      // Standard Off-The-Rack M Size calculation deviates from ideal fit
       const deltaH = Math.abs(h - 178);
       const deltaC = Math.abs(c - 98);
       const deltaT = Math.abs(t - 2);
 
-      const penalty = (deltaH * 0.9) + (deltaC * 1.4) + (deltaT * 12);
+      const penalty = (deltaH * 0.9) + (deltaC * 1.3) + (deltaT * 12);
       const fitScore = Math.max(38, Math.min(84, Math.round(92 - penalty)));
-      const waterRisk = Math.max(12, Math.min(68, Math.round(penalty * 0.75 + 10)));
-      const flexScore = Math.max(45, Math.min(80, Math.round(85 - penalty * 0.5)));
+      const waterRisk = Math.max(12, Math.min(68, Math.round(penalty * 0.75 + 12)));
+      const flexScore = Math.max(45, Math.min(80, Math.round(86 - penalty * 0.5)));
 
       if (scoreEl) {
         scoreEl.textContent = `${fitScore}%`;

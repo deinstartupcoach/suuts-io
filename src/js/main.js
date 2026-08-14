@@ -1,47 +1,70 @@
-import { createIcons, Box, Cpu, Waves, Sparkles, Check, ArrowRight, ShieldCheck, Layers, Ruler, Smartphone, X, Menu } from 'lucide';
-import { init3DScanner } from './scanner-3d.js';
-import { initFitSimulator } from './fit-simulator.js';
+import { 
+  createIcons, 
+  Waves, 
+  Heart, 
+  Sparkles, 
+  Cpu, 
+  Check, 
+  ArrowRight, 
+  ShieldCheck, 
+  Layers, 
+  Ruler, 
+  Smartphone, 
+  X, 
+  Menu,
+  Award,
+  Activity,
+  Compass,
+  Feather,
+  Building2,
+  UserCheck,
+  Mail,
+  Send
+} from 'lucide';
 import { translations } from './i18n.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize Lucide Icons
-  createIcons({
-    icons: {
-      Box,
-      Cpu,
-      Waves,
-      Sparkles,
-      Check,
-      ArrowRight,
-      ShieldCheck,
-      Layers,
-      Ruler,
-      Smartphone,
-      X,
-      Menu,
-    },
-  });
-
-  // 2. Initialize 3D Body Scanner
-  const scannerCanvas = document.getElementById('bodyScannerCanvas');
-  if (scannerCanvas) {
-    init3DScanner(scannerCanvas);
+  function renderIcons() {
+    createIcons({
+      icons: {
+        Waves,
+        Heart,
+        Sparkles,
+        Cpu,
+        Check,
+        ArrowRight,
+        ShieldCheck,
+        Layers,
+        Ruler,
+        Smartphone,
+        X,
+        Menu,
+        Award,
+        Activity,
+        Compass,
+        Feather,
+        Building2,
+        UserCheck,
+        Mail,
+        Send
+      },
+    });
   }
 
-  // 3. Initialize Interactive Fit Simulator
-  initFitSimulator();
+  renderIcons();
 
-  // 4. Header Scroll State
+  // 2. Header Scroll State
   const header = document.querySelector('.site-header');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 30) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
   });
 
-  // 5. Mobile Navigation
+  // 4. Mobile Navigation Toggle
   const mobileToggle = document.getElementById('mobileNavToggle');
   const navLinks = document.querySelector('.nav-links');
   if (mobileToggle && navLinks) {
@@ -49,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinks.classList.toggle('open');
     });
 
-    // Close mobile nav on link click
     navLinks.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('open');
@@ -57,20 +79,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Language Switcher (EN / DE)
-  let currentLang = 'de'; // Default to DE for German EXIST context, easy toggle to EN
+  // 5. Language Switcher (DE / EN)
+  let currentLang = 'de';
   const langBtns = document.querySelectorAll('.lang-btn');
 
   function setLanguage(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
 
-    // Update button states
+    // Update button active state
     langBtns.forEach((btn) => {
       btn.classList.toggle('active', btn.dataset.lang === lang);
     });
 
-    // Translate all elements with data-i18n
+    // Translate DOM elements
     const dict = translations[lang];
     if (!dict) return;
 
@@ -81,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Translate placeholder attributes if any
     document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
       const key = el.getAttribute('data-i18n-placeholder');
       if (dict[key]) {
@@ -89,28 +110,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Re-trigger simulator calculation for translated strings
-    const event = new Event('input', { bubbles: true });
+    // Re-trigger simulator update for localized text
     const heightSlider = document.getElementById('sim-height');
-    if (heightSlider) heightSlider.dispatchEvent(event);
+    if (heightSlider) {
+      heightSlider.dispatchEvent(new Event('input', { bubbles: true }));
+    }
 
-    // Re-render icons that might be dynamically inside translated elements
-    createIcons({
-      icons: {
-        Box,
-        Cpu,
-        Waves,
-        Sparkles,
-        Check,
-        ArrowRight,
-        ShieldCheck,
-        Layers,
-        Ruler,
-        Smartphone,
-        X,
-        Menu,
-      },
-    });
+    // Re-render icons if any were injected in dynamic strings
+    renderIcons();
   }
 
   langBtns.forEach((btn) => {
@@ -122,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set initial language
   setLanguage(currentLang);
 
-  // 7. Modals: Impressum & Privacy
+  // 6. Modals (Impressum & Datenschutz)
   const impressumModal = document.getElementById('impressumModal');
   const privacyModal = document.getElementById('privacyModal');
   const openImpressumBtns = document.querySelectorAll('.open-impressum');
@@ -152,21 +159,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 8. Pilot Partner Form Submission
-  const pilotForm = document.getElementById('pilotForm');
+  // Escape key to close modals
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (impressumModal) impressumModal.classList.remove('active');
+      if (privacyModal) privacyModal.classList.remove('active');
+    }
+  });
+
+  // 7. Contact Form Submission
+  const contactForm = document.getElementById('contactForm');
   const formSuccess = document.getElementById('formSuccess');
 
-  if (pilotForm) {
-    pilotForm.addEventListener('submit', (e) => {
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const submitBtn = pilotForm.querySelector('button[type="submit"]');
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.innerHTML;
 
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Processing...</span>';
+      submitBtn.innerHTML = '<span>Verarbeite...</span>';
 
       setTimeout(() => {
-        pilotForm.reset();
+        contactForm.reset();
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
         if (formSuccess) {
