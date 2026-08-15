@@ -9,7 +9,7 @@ export const translations = {
     // Hero Section
     heroBadgeExist: 'EXIST-gefördert • Deutsche Hochschul-Ausgründung',
     heroTitle: 'Deine zweite Haut – <span class="text-gradient">sitzt wie die erste.</span>',
-    heroLead: 'Dein individueller Wetsuit mit perfektem Sitz für jeden Körper. Kein Kälteeinbruch, keine reibenden Stellen bei voller Bewegungsfreiheit. Dank millimetergenauer Biometrie aus lediglich zwei Smartphone-Fotos.',
+    heroLead: 'Dein individueller Wetsuit mit perfektem Sitz für jeden Körper. Kein Kälteeinbruch, keine reibenden Stellen bei voller Bewegungsfreiheit. Dank millimetergenauer digitaler Vermessung aus lediglich 4 einfachen Fotos via Smartphone oder Webcam.',
     heroCtaPrimary: 'Pilotpartner werden',
     heroCtaSecondary: '3D-Pipeline entdecken',
 
@@ -31,32 +31,32 @@ export const translations = {
     pillarBodyF3: 'Perfekter Halt & Selbstvertrauen',
 
     pillarTechTitle: 'KI 3D-Computer-Vision',
-    pillarTechDesc: 'Aus 2 normalen Smartphone-Fotos generiert unsere neuronale Engine ein hochpräzises 3D-Körpermodell für den automatisierten CNC-Zuschnitt.',
-    pillarTechF1: 'Kein 3D-Scanner / LiDAR nötig',
+    pillarTechDesc: 'Aus nur 4 einfachen Fotos via Smartphone oder Webcam generiert unsere neuronale Engine ein hochpräzises, parametrisches 3D-Körpermodell für den passgenauen Zuschnitt.',
+    pillarTechF1: 'Smartphone & Webcam kompatibel',
     pillarTechF2: 'In unter 30 Sekunden ermittelt',
     pillarTechF3: '100% DSGVO-konform On-Device',
 
     // 3D Pipeline
     techTag: 'Dein Weg zum Traum-Anzug',
     techTitle: 'In 3 Schritten zur <span class="text-gradient">perfekten zweiten Haut</span>',
-    techSubtitle: 'Vom einfachen Handyfoto direkt zum präzisen CAD-Schnittmuster für Shaper und Wetsuit-Manufakturen.',
+    techSubtitle: 'Von 4 einfachen Fotos direkt zum passgenauen CAD-Schnittmuster für Shaper und Wetsuit-Manufakturen.',
     step1Num: '01',
-    step1Title: 'Mobiler 2-Foto Scan',
-    step1Desc: 'Front- und Seitenaufnahme mit jedem Smartphone – ohne teure 3D-Kabinen oder LiDAR-Sensorik.',
-    step1F1: 'Sofortige On-Device Anonymisierung',
+    step1Title: 'Einfacher 4-Foto Scan',
+    step1Desc: 'Vier Aufnahmen (Front, Rücken, Seiten) mit dem Smartphone oder der Webcam – ganz ohne teure 3D-Kabinen oder Spezial-Hardware.',
+    step1F1: 'On-Device & DSGVO-anonymisiert',
     step1F2: 'Automatische Haltungskorrektur',
 
     step2Num: '02',
     step2Title: 'KI 3D-Mesh Rekonstruktion',
-    step2Desc: 'Neuronales Netz erzeugt ein parametrisches 3D-Volumenmodell und berechnet 80+ biometrische Schnittmaße.',
-    step2F1: 'Millimetergenaue Konturen',
-    step2F2: 'Berechnung in unter 15 Sekunden',
+    step2Desc: 'Neuronales Netz erzeugt ein anatomisches 3D-Volumenmodell und extrahiert über 60 präzise anthropometrische Körper- & Schnittmaße.',
+    step2F1: 'Millimetergenaue Konturen & Umfänge',
+    step2F2: 'Berechnung in wenigen Sekunden',
 
     step3Num: '03',
-    step3Title: 'Automatisierter CNC-Zuschnitt',
-    step3Desc: 'Direkter Export in gängige CAD-Formate mit individueller Materialdehnung und optimierten Nahtverläufen.',
-    step3F1: 'Direktexport für CNC-Cutter (DXF)',
-    step3F2: 'Minimierter Neopren-Verschnitt',
+    step3Title: 'CAD-Schnittmuster & Digitaler Zuschnitt',
+    step3Desc: 'Automatische Generierung maßgeschneiderter 2D-Schnittteile mit individueller Materialdehnung (Neopren-Flex) und optimierten Nahtverläufen.',
+    step3F1: 'Direktexport für digitale Schneidsysteme (DXF)',
+    step3F2: 'Minimierter Neopren-Verschnitt & Zero Waste',
 
     // University Cooperation & EXIST Funding
     researchTag: 'Unser Vorhaben',
@@ -102,7 +102,7 @@ export const translations = {
     // Hero Section
     heroBadgeExist: 'EXIST-Funded • German University Spin-off',
     heroTitle: 'Your body <span class="text-gradient">suuts.io</span> – your sportsgear should, too.',
-    heroLead: 'Your custom wetsuit with a perfect fit for every body. Zero flushing, no chafing, and full freedom of movement. Powered by millimeter-precise biometrics from just two smartphone photos.',
+    heroLead: 'Your custom wetsuit with a perfect fit for every body. Zero flushing, no chafing, and full freedom of movement. Powered by millimeter-precise digital body measurement from just 4 photos via smartphone or webcam.',
     heroCtaPrimary: 'Become a Pilot Partner',
     heroCtaSecondary: 'Explore 3D Pipeline',
 
@@ -124,32 +124,32 @@ export const translations = {
     pillarBodyF3: 'Unmatched confidence in the ocean',
 
     pillarTechTitle: 'AI 3D Computer Vision',
-    pillarTechDesc: 'From two standard smartphone photos, our neural engine creates a parametric 3D body avatar ready for automated CNC neoprene cutting.',
-    pillarTechF1: 'No LiDAR or 3D booths needed',
+    pillarTechDesc: 'From just 4 simple photos via smartphone or webcam, our neural engine reconstructs a high-precision parametric 3D body model ready for tailored pattern cutting.',
+    pillarTechF1: 'Smartphone & webcam compatible',
     pillarTechF2: 'Processed in under 30 seconds',
     pillarTechF3: '100% GDPR-compliant on-device',
 
     // 3D Pipeline
     techTag: 'Your Path to the Dream Suit',
-    techTitle: 'From Smartphone to <span class="text-gradient">Custom Neoprene</span>',
-    techSubtitle: 'Directly converting 2D mobile photos into production-ready CAD patterns for shapers and wetsuit manufacturers.',
+    techTitle: 'From 4 Photos to <span class="text-gradient">Custom Neoprene</span>',
+    techSubtitle: 'Directly converting 4 standard photos into production-ready CAD patterns for shapers and wetsuit manufacturers.',
     step1Num: '01',
-    step1Title: 'Mobile Dual-Angle Capture',
-    step1Desc: 'Quick front and side photos using any standard smartphone. No expensive hardware needed.',
+    step1Title: 'Simple 4-Photo Capture',
+    step1Desc: 'Four quick shots (front, back, sides) using any standard smartphone or webcam – without bulky 3D body booths or expensive hardware.',
     step1F1: 'Instant on-device anonymization',
     step1F2: 'Automated posture alignment',
 
     step2Num: '02',
-    step2Title: 'AI 3D Mesh Avatar',
-    step2Desc: 'Neural geometry engine extracts 80+ biometric measurements and fits a parametric 3D body volume.',
+    step2Title: 'AI 3D Mesh Reconstruction',
+    step2Desc: 'Neural geometry engine extracts 60+ precise anthropometric measurements and fits an accurate parametric 3D body avatar.',
     step2F1: 'Millimeter anatomical contours',
     step2F2: 'Real-time calculation (< 15s)',
 
     step3Num: '03',
-    step3Title: 'Automated CNC Cutting',
-    step3Desc: 'Direct export into CNC cutter CAD formats with custom panel stretch and seam alignment.',
-    step3F1: 'Direct export for CNC cutters (DXF)',
-    step3F2: 'Minimized material scrap',
+    step3Title: 'CAD Patterns & Digital Cutting',
+    step3Desc: 'Automated generation of tailored 2D patterns with custom panel stretch (neoprene flex) and optimized seam layouts.',
+    step3F1: 'Direct export for digital cutting tables (DXF)',
+    step3F2: 'Minimized material scrap & optimized yield',
 
     // University Cooperation & EXIST Funding
     researchTag: 'Our Project',
