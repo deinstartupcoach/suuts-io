@@ -803,10 +803,15 @@
     padding-bottom: 3.5rem;
   }
 
+  .hero-bg {
+    height: clamp(450px, 80vw, 580px);
+    bottom: auto;
+  }
+
   .hero-bg-img {
     height: 100%;
     margin-top: 0;
-    object-position: 14% 12%;
+    object-position: 22% 10%;
   }
 
   .hero-container {
@@ -815,15 +820,14 @@
   }
 
   .hero-spacer {
-    min-height: clamp(340px, 62vw, 480px);
+    min-height: clamp(300px, 58vw, 420px);
   }
 
   .hero-bg-overlay {
     background: linear-gradient(180deg, 
       rgba(0, 0, 0, 0.0) 0%, 
-      rgba(0, 0, 0, 0.0) 42%, 
-      rgba(243, 239, 233, 0.20) 60%, 
-      rgba(243, 239, 233, 0.80) 80%, 
+      rgba(0, 0, 0, 0.0) 50%, 
+      rgba(243, 239, 233, 0.40) 75%, 
       var(--bg-sand) 95%,
       var(--bg-sand) 100%);
   }
@@ -874,12 +878,17 @@
     padding-bottom: 2.5rem;
   }
 
+  .hero-bg {
+    height: clamp(380px, 95vw, 480px);
+    bottom: auto;
+  }
+
   .hero-bg-img {
-    object-position: 12% 8%;
+    object-position: 23% 10%;
   }
 
   .hero-spacer {
-    min-height: clamp(330px, 80vw, 420px);
+    min-height: clamp(280px, 72vw, 360px);
   }
 
   .hero-title {
