@@ -123,11 +123,30 @@
 /* ==========================================================================
    2. Three Pillars Section (Surf x Body Positivity x Tech)
    ========================================================================== */
+.pillars-section {
+  position: relative;
+  overflow: hidden;
+  background-color: #001f3d;
+  background: linear-gradient(135deg, #082149 0%, #001f3d 40%, #001830 100%);
+  color: var(--text-inverse);
+  border-top: 2px solid var(--border-section-dark);
+  border-bottom: 2px solid var(--border-section-dark);
+}
+
+.pillars-section .section-title {
+  color: #ffffff;
+}
+
+.pillars-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+}
+
 .pillars-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
+
 
 .pillar-card {
   display: flex;
@@ -777,26 +796,36 @@
    ========================================================================== */
 @media (max-width: 1024px) {
   .hero-section {
+    aspect-ratio: auto;
     min-height: auto;
-    padding-top: calc(72px + 1.5rem);
+    height: auto;
+    padding-top: calc(72px + 1.25rem);
     padding-bottom: 3.5rem;
+  }
+
+  .hero-bg-img {
+    height: 100%;
+    margin-top: 0;
+    object-position: 14% 12%;
   }
 
   .hero-container {
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 
   .hero-spacer {
-    min-height: 240px;
+    min-height: clamp(340px, 62vw, 480px);
   }
 
   .hero-bg-overlay {
     background: linear-gradient(180deg, 
-      rgba(240, 236, 235, 0.05) 0%, 
-      rgba(255, 255, 255, 0.70) 25%, 
-      rgba(255, 255, 255, 0.95) 55%,
-      #ffffff 100%);
+      rgba(0, 0, 0, 0.0) 0%, 
+      rgba(0, 0, 0, 0.0) 42%, 
+      rgba(243, 239, 233, 0.20) 60%, 
+      rgba(243, 239, 233, 0.80) 80%, 
+      var(--bg-sand) 95%,
+      var(--bg-sand) 100%);
   }
 
   .hero-content-panel {
@@ -838,12 +867,19 @@
 
 @media (max-width: 640px) {
   .hero-section {
-    padding-top: calc(72px + 1rem);
+    aspect-ratio: auto;
+    height: auto;
+    min-height: auto;
+    padding-top: calc(72px + 0.75rem);
     padding-bottom: 2.5rem;
   }
 
+  .hero-bg-img {
+    object-position: 12% 8%;
+  }
+
   .hero-spacer {
-    min-height: 160px;
+    min-height: clamp(330px, 80vw, 420px);
   }
 
   .hero-title {
@@ -861,6 +897,7 @@
     padding: 1.5rem 1.15rem;
     border-radius: var(--radius-xl);
   }
+
 
   .hero-surfboard-icon {
     height: 110%;

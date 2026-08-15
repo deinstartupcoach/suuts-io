@@ -210,6 +210,15 @@ button, input, textarea, select {
   display: inline-block;
 }
 
+.text-gradient-rose {
+  background: linear-gradient(135deg, #ff6584 0%, #f43f8e 50%, #ea580c 100%);
+  background: linear-gradient(135deg, #ff758c 0%, #ff5277 40%, #f43f8e 70%, #ff8fa3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 16px rgba(244, 63, 142, 0.35));
+}
+
 .text-teal {
   color: var(--tropical-teal-dark);
 }
@@ -225,3 +234,4 @@ button, input, textarea, select {
 .text-black {
   color: var(--text-dark) !important;
 }
+

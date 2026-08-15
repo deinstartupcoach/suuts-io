@@ -15,7 +15,7 @@ export const translations = {
 
     // Pillars Section (Surf x Body Positivity x Tech)
     pillarsTag: 'Unsere Mission',
-    pillarsTitle: 'Technologie. Surfsport. <span class="text-gradient">Body Positivity.</span>',
+    pillarsTitle: 'Technologie. <span class="text-gradient-rose">Surfsport.</span> <span class="text-gradient">Body Positivity.</span>',
     pillarsSubtitle: 'Wir verbinden Spitzenforschung aus der 3D-Computer-Messtechnik mit Leidenschaft für den Surfsport.',
     
     pillarSurfTitle: 'Surfsport & Performance',
@@ -60,7 +60,7 @@ export const translations = {
 
     // University Cooperation & EXIST Funding
     researchTag: 'Unser Vorhaben',
-    researchTitle: 'Moderne Messtechnik trifft auf <span class="text-gradient">Textilhandwerk &amp; Leidenschaft für den Wassersport.</span>',
+    researchTitle: 'Moderne Messtechnik trifft auf <span class="text-gradient-rose">Textilhandwerk</span> <span class="text-gradient">&amp; Leidenschaft für den Wassersport.</span>',
     researchSubtitle: 'suuts.io entsteht als EXIST-geförderte, wissenschaftliche Ausgründung des Lehrstuhls für Verfahrenstechnik der Technischen Hochschule Augsburg. Wir bringen 3D Computer Vision dahin, wo Passform wichtig ist – individuell produzierte Wetsuits für mehr als Standardmaße.',
     researchPerk1: 'Gefördert durch das Bundesministerium für Wirtschaft und Klimaschutz sowie den Europäischen Sozialfonds.',
     researchPerk2: 'Entwickelt in Kooperation mit regionalen Textilbetrieben',
@@ -108,7 +108,7 @@ export const translations = {
 
     // Pillars Section
     pillarsTag: 'Our Mission',
-    pillarsTitle: 'Technology. Surfing. <span class="text-gradient">Body Positivity.</span>',
+    pillarsTitle: 'Technology. <span class="text-gradient-rose">Surfing.</span> <span class="text-gradient">Body Positivity.</span>',
     pillarsSubtitle: 'We combine cutting-edge research in 3D computer measurement technology with a passion for surfing.',
 
     pillarSurfTitle: 'Surfing & Performance',
@@ -153,7 +153,7 @@ export const translations = {
 
     // University Cooperation & EXIST Funding
     researchTag: 'Our Project',
-    researchTitle: 'Modern Measurement Technology Meets <span class="text-gradient">Textile Craft &amp; Passion for Water Sports.</span>',
+    researchTitle: 'Modern Measurement Technology Meets <span class="text-gradient-rose">Textile Craft</span> <span class="text-gradient">&amp; Passion for Water Sports.</span>',
     researchSubtitle: 'suuts.io is emerging as an EXIST-funded, academic spin-off from the Chair of Process Engineering at Technical University of Applied Sciences Augsburg. We bring 3D computer vision to where fit truly matters – custom-tailored wetsuits beyond standard sizing.',
     researchPerk1: 'Funded by the Federal Ministry for Economic Affairs and Climate Action and the European Social Fund.',
     researchPerk2: 'Developed in collaboration with regional textile manufacturing partners',
